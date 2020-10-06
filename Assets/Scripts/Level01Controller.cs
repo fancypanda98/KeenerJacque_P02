@@ -9,6 +9,7 @@ public class Level01Controller : MonoBehaviour
 {
 
     [SerializeField] Text _currentScoreTextView;
+    [SerializeField] GameObject _canvas;
 
     int _currentscore = 0;
 
@@ -16,7 +17,7 @@ public class Level01Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class Level01Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitLevel();
+            ToggleCanvas();
         }
     }
 
@@ -50,5 +51,10 @@ public class Level01Controller : MonoBehaviour
     {
         _currentscore += scoreIncrease;
         _currentScoreTextView.text = "Score: " + _currentscore.ToString();
+    }
+
+    public void ToggleCanvas()
+    {
+        _canvas.SetActive(!_canvas.activeSelf);
     }
 }

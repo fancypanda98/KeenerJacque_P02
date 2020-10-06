@@ -22,6 +22,18 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    public void ResetData()
+    {
+        int temp = 0;
+        PlayerPrefs.SetInt("HighScore", temp);
+        _highScoreTextView.text = PlayerPrefs.GetInt("HighScore").ToString();
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     // Update is called once per frame
     void Update()
     {
