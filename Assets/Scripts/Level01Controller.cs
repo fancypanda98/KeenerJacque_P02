@@ -43,7 +43,7 @@ public class Level01Controller : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", _currentscore);
             Debug.Log("New high score: " + _currentscore);
         }
-
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -56,5 +56,13 @@ public class Level01Controller : MonoBehaviour
     public void ToggleCanvas()
     {
         _canvas.SetActive(!_canvas.activeSelf);
+        if (_canvas.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
