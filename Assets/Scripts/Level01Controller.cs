@@ -33,7 +33,7 @@ public class Level01Controller : MonoBehaviour
             ToggleCanvas();
         }
 
-        if(PlayerPrefs.GetInt("Health") == 0)){
+        if(PlayerPrefs.GetInt("Health") == 0){
             ExitLevel();
         }
 
