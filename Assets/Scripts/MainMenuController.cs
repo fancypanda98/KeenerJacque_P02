@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
     {
         int highScore = PlayerPrefs.GetInt("HighScore");
         _highScoreTextView.text = highScore.ToString();
+        PlayerPrefs.SetInt("Health", 3);
 
 
         if(_startingSong != null)

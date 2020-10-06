@@ -32,6 +32,11 @@ public class Level01Controller : MonoBehaviour
         {
             ToggleCanvas();
         }
+
+        if(PlayerPrefs.GetInt("Health") == 0)){
+            ExitLevel();
+        }
+
     }
 
     public void ExitLevel()
@@ -44,6 +49,7 @@ public class Level01Controller : MonoBehaviour
             Debug.Log("New high score: " + _currentscore);
         }
         Cursor.lockState = CursorLockMode.None;
+        PlayerPrefs.SetInt("Health", 3);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -64,5 +70,10 @@ public class Level01Controller : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    public void TakeDamage()
+    {
+        Debug.Log("hit");
     }
 }
