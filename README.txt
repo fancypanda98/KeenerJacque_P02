@@ -1,0 +1,11 @@
+https://github.com/fancypanda98/KeenerJacque_P02
+
+W - FORWARD
+S - BACKWARDS
+A - LEFT
+D - RIGHT
+MOUSE - MOVE CAMERA
+LSHIFT - SPRINT
+SPACE - JUMP
+Q - GET 5 POINTS
+ESC - PAUSE
