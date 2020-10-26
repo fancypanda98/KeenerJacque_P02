@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,9 +14,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] float jumpHeight = 3f;
 
+    [SerializeField] ParticleSystem gunSmoke = null;
+    [SerializeField] AudioClip shootingNoise = null;
+    [SerializeField] Camera cameraController = null;
+    [SerializeField] Transform rayOrigin = null;
+    [SerializeField] float shootDistance = 10f;
+    [SerializeField] CharacterController playerController = null;
+
     Vector3 velocity;
     bool isGrounded;
-
+    RaycastHit objectHit;
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +43,50 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        if(isGrounded){
+            if (velocity.x > 0)
+            {
+                velocity.x = Math.Max(velocity.x - 2f, 0);
+            }
+            if (velocity.x < 0)
+            {
+                velocity.x = Math.Min(velocity.x + 2f, 0);
+            }
+            if (velocity.z > 0)
+            {
+                velocity.z = Math.Max(velocity.z - 2f, 0);
+            }
+            if (velocity.z < 0)
+            {
+                velocity.z = Math.Min(velocity.z + 2f, 0);
+            }
+        }
+        else
+        {
+            if (velocity.x > 0)
+            {
+                velocity.x = Math.Max(velocity.x - .02f, 0);
+            }
+            if (velocity.x < 0)
+            {
+                velocity.x = Math.Min(velocity.x + .02f, 0);
+            }
+            if (velocity.z > 0)
+            {
+                velocity.z = Math.Max(velocity.z - .02f, 0);
+            }
+            if (velocity.z < 0)
+            {
+                velocity.z = Math.Min(velocity.z + .02f, 0);
+            }
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             speed *= 2f;
         }
@@ -53,6 +99,35 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            ShootGun();
+        }
+
         controller.Move(velocity * Time.deltaTime);
+
+    }
+
+    public void ShootGun()
+    {
+        Vector3 rayDirection = cameraController.transform.forward;
+        Debug.DrawRay(rayOrigin.position, rayDirection * shootDistance, Color.white, 1f);
+        if (Physics.Raycast(rayOrigin.position, rayDirection, out objectHit, shootDistance))
+        {
+            Debug.Log("Hitt: " + objectHit.transform.name);
+            Vector3 moveDir = playerController.transform.position - objectHit.point;
+            moveDir.Normalize();
+            velocity.x += moveDir.x * 20;
+            velocity.y += moveDir.y * 20;
+            velocity.z += moveDir.z * 20;
+
+        }
+        else
+        {
+            Debug.Log("Miss");
+        }
+
+        gunSmoke.Play();
+        AudioManager.PlayClip2D(shootingNoise, 100);
     }
 }
