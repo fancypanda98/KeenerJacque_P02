@@ -33,6 +33,19 @@ public class AudioManager : MonoBehaviour
         _audioSorce.Play();
     }
 
+    public static AudioSource PlayClip2D(AudioClip clip, float volume)
+    {
+        GameObject audioObject = new GameObject("2DAudio");
+        AudioSource audioSource = audioObject.AddComponent <AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+
+        audioSource.Play();
+        Object.Destroy(audioObject, clip.length);
+
+        return audioSource;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
