@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
     RaycastHit objectHit;
+    float currentShootDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentShootDistance = shootDistance;
         if (canvas3.activeSelf)
         {
             float speed = baseSpeed;
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (isGrounded && velocity.y < 0)
             {
-                velocity.y = -2f;
+                velocity.y = 0f;
             }
 
             if (isGrounded)
@@ -85,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     velocity.z = Math.Min(velocity.z + .02f, 0);
                 }
+                currentShootDistance = shootDistance + 1f;
             }
 
             float x = Input.GetAxis("Horizontal");
@@ -118,8 +121,8 @@ public class PlayerMovement : MonoBehaviour
     public void ShootGun()
     {
         Vector3 rayDirection = cameraController.transform.forward;
-        Debug.DrawRay(rayOrigin.position, rayDirection * shootDistance, Color.white, 1f);
-        if (Physics.Raycast(rayOrigin.position, rayDirection, out objectHit, shootDistance))
+        Debug.DrawRay(rayOrigin.position, rayDirection * currentShootDistance, Color.white, 1f);
+        if (Physics.Raycast(rayOrigin.position, rayDirection, out objectHit, currentShootDistance))
         {
             Debug.Log("Hitt: " + objectHit.transform.name);
             Vector3 moveDir = playerController.transform.position - objectHit.point;
