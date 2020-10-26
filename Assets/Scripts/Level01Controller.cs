@@ -10,6 +10,7 @@ public class Level01Controller : MonoBehaviour
 
     [SerializeField] Text _currentScoreTextView;
     [SerializeField] GameObject _canvas;
+    [SerializeField] GameObject _canvas3;
 
     int _currentscore = 0;
 
@@ -62,6 +63,7 @@ public class Level01Controller : MonoBehaviour
     public void ToggleCanvas()
     {
         _canvas.SetActive(!_canvas.activeSelf);
+        _canvas3.SetActive(!_canvas3.activeSelf);
         if (_canvas.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
