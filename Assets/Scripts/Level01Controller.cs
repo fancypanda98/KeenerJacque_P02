@@ -29,7 +29,6 @@ public class Level01Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            IncreaseScore(5);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

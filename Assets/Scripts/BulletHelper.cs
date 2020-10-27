@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletHelper : MonoBehaviour
 {
+
+    [SerializeField] GameObject bullet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,7 @@ public class BulletHelper : MonoBehaviour
         {
             PlayerPrefs.SetInt("Health", PlayerPrefs.GetInt("Health") - 1);
         }
+        bullet.SetActive(false);
     }
 
 }

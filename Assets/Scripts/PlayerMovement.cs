@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (isGrounded && velocity.y < 0)
             {
-                velocity.y = 0f;
+                velocity.y = -2f;
             }
 
             if (isGrounded)
@@ -124,6 +124,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(rayOrigin.position, rayDirection * currentShootDistance, Color.white, 1f);
         if (Physics.Raycast(rayOrigin.position, rayDirection, out objectHit, currentShootDistance))
         {
+            if(objectHit.transform.name == "Body")
+            {
+                objectHit.transform.gameObject.SetActive(false);
+            }
             Debug.Log("Hitt: " + objectHit.transform.name);
             Vector3 moveDir = playerController.transform.position - objectHit.point;
             moveDir.Normalize();

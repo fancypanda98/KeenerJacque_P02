@@ -32,13 +32,4 @@ public class BulletScript : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject.name);
-
-        if (other.gameObject.name == "FirstPersonPlayer")
-        {
-            PlayerPrefs.SetInt("Health", PlayerPrefs.GetInt("Health") - 1);
-        }
-    }
 }
