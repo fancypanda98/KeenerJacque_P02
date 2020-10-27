@@ -18,7 +18,10 @@ public class Level01Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Reach 1");
         _canvas.SetActive(false);
+        Vector3 temp = new Vector3(0f, 5f, 0f);
+        Debug.Log("Reach 1");
     }
 
     // Update is called once per frame
@@ -63,7 +66,17 @@ public class Level01Controller : MonoBehaviour
     public void ToggleCanvas()
     {
         _canvas.SetActive(!_canvas.activeSelf);
-        _canvas3.SetActive(!_canvas3.activeSelf);
+        /*_canvas3.SetActive(!_canvas3.activeSelf);
+
+        if(PlayerPrefs.GetInt("Pausep") == 0)
+        {
+            PlayerPrefs.SetInt("Pausep", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Pausep", 0);
+        }
+
         if (_canvas.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -71,7 +84,7 @@ public class Level01Controller : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-        }
+        }*/
     }
 
     public void TakeDamage()
