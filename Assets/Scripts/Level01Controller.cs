@@ -21,7 +21,6 @@ public class Level01Controller : MonoBehaviour
         Debug.Log("Reach 1");
         _canvas.SetActive(false);
         Vector3 temp = new Vector3(0f, 5f, 0f);
-        Debug.Log("Reach 1");
     }
 
     // Update is called once per frame

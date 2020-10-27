@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject canvas3 = null;
     [SerializeField] ShootBarScript barScript = null;
 
+    [SerializeField] AudioClip noise;
+
     Vector3 velocity;
     bool isGrounded;
     RaycastHit objectHit;
@@ -32,7 +34,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Reach 4");
         PlayerPrefs.SetInt("Pause", 0);
+        Debug.Log("Reach 4");
     }
 
     // Update is called once per frame
@@ -126,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(objectHit.transform.name == "Body")
             {
+                AudioManager.PlayClip2D(noise, 100);
                 objectHit.transform.gameObject.SetActive(false);
             }
             Debug.Log("Hitt: " + objectHit.transform.name);

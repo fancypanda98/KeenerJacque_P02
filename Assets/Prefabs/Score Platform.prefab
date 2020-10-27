@@ -121,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 2029216991845550033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 1, z: 2.5}
   m_Children:
   - {fileID: 2029216990542716819}
   - {fileID: 2029216992174233465}
@@ -144,6 +144,8 @@ MonoBehaviour:
   pressed: {fileID: 2100000, guid: af19aca5250b1bc429d86f03969720c7, type: 2}
   plat: {fileID: 2029216990542716820}
   trig: {fileID: 2029216992174233469}
+  on: 0
+  pint: 0
 --- !u!1 &2029216992174233468
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,4 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117acdfab7907bd4a9aa0e7aa583c0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lc: {fileID: 0}
+  noise: {fileID: 8300000, guid: 4c026f1c4ab93714f96d74fbe8da257c, type: 3}
   check: 0
+  pin: 0
+  val: 0

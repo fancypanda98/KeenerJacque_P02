@@ -7,10 +7,11 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
 
-    [SerializeField] float shootCooldown = 180f;
+    [SerializeField] float shootCooldown = 1600f;
     [SerializeField] GameObject bulletPrefab = null;
     [SerializeField] GameObject gunEnd = null;
     [SerializeField] ParticleSystem die;
+    [SerializeField] AudioClip noise;
     float cooldown = 0f;
     public bool targeting;
     float respawn = 300f;
@@ -21,7 +22,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         targeting = false;
         cooldown = shootCooldown;
-        respawn = 300f;
+        respawn = 2000f;
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class EnemyBehavior : MonoBehaviour
         if (!gunEnd.activeSelf)
         {
             
-            if (respawn == 300f)
+            if (respawn == 2000f)
             {
                 die.Play();
             }
@@ -43,6 +44,7 @@ public class EnemyBehavior : MonoBehaviour
             {
                 if (cooldown == shootCooldown)
                 {
+                    AudioManager.PlayClip2D(noise, 100f);
                     GameObject bullet = Instantiate(bulletPrefab, gunEnd.transform.position + (gunEnd.transform.forward * 1.75f), gunEnd.transform.rotation);
                     cooldown = 0f;
                 }
@@ -54,7 +56,7 @@ public class EnemyBehavior : MonoBehaviour
         if (respawn == 0f)
         {
             gunEnd.SetActive(true);
-            respawn = 300f;
+            respawn = 2000f;
         }
 
     }

@@ -10,6 +10,8 @@ public class PlatformHelper : MonoBehaviour
     [SerializeField] MeshRenderer plat;
     [SerializeField] PlatformTrigger trig;
 
+    public bool on = false;
+    public bool pint = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class PlatformHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pint = trig.pin;
+        on = trig.check;
         if (trig.check)
         {
             plat.material = pressed;
