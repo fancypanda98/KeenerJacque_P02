@@ -66,15 +66,15 @@ public class Level01Controller : MonoBehaviour
     public void ToggleCanvas()
     {
         _canvas.SetActive(!_canvas.activeSelf);
-        /*_canvas3.SetActive(!_canvas3.activeSelf);
+        _canvas3.SetActive(!_canvas3.activeSelf);
 
-        if(PlayerPrefs.GetInt("Pausep") == 0)
+        if(PlayerPrefs.GetInt("Pause") == 0)
         {
-            PlayerPrefs.SetInt("Pausep", 1);
+            PlayerPrefs.SetInt("Pause", 1);
         }
         else
         {
-            PlayerPrefs.SetInt("Pausep", 0);
+            PlayerPrefs.SetInt("Pause", 0);
         }
 
         if (_canvas.activeSelf)
@@ -84,7 +84,7 @@ public class Level01Controller : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-        }*/
+        }
     }
 
     public void TakeDamage()

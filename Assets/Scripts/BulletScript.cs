@@ -19,7 +19,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("Pause") == 1)
+        if (PlayerPrefs.GetInt("Pause") == 0)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             transform.Rotate(0f, 0f, 2f, Space.Self);
@@ -28,6 +28,17 @@ public class BulletScript : MonoBehaviour
             {
                 bullet.SetActive(false);
             }
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+
+        if (other.gameObject.name == "FirstPersonPlayer")
+        {
+            PlayerPrefs.SetInt("Health", PlayerPrefs.GetInt("Health") - 1);
         }
     }
 }

@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Reach 1");
+        PlayerPrefs.SetInt("Pause", 0);
     }
 
     // Update is called once per frame
